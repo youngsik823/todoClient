@@ -32,11 +32,16 @@ const TodoTemplate = () => {
         },
     ];
 
+    // TodoInput에게 todoText를 받아오는 함수
+    const addTodo = todoText => {
+        console.log('할일 정보 in TodoTemplate: ', todoText);
+    };
+
   return (
     <div className='TodoTemplate'>
         <TodoHeader />
         <TodoMain todoList={todos} />
-        <TodoInput />
+        <TodoInput addTodo={addTodo} />
     </div>
   )
 }
