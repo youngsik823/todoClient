@@ -7,7 +7,6 @@ import './scss/TodoTemplate.scss';
 
 const TodoTemplate = () => {
 
-
     // 서버에 할일 목록(json)을 요청해서 받아와야 함
     const API_BASE_URL = 'http://localhost:8181/api/todos';
     
@@ -62,9 +61,7 @@ const TodoTemplate = () => {
       .then(json => {
         setTodos(json.todos);
       });
-
     };
-
 
     // 할 일 체크 처리 함수
     const checkTodo = (id, done) => {
