@@ -10,7 +10,7 @@ const Header = () => {
 
   const redirection = useNavigate();
 
-  const [userInfo, setUserInfo] = useState({});
+  const [userInfo, setUserInfo] = useState(getLoginUserInfo());
 
   const { token, username, role } = userInfo;
 
@@ -33,7 +33,7 @@ const Header = () => {
   */
   useEffect(() => {
     setUserInfo(getLoginUserInfo());
-  }, [userInfo]);
+  }, []);
 
   return (
     <AppBar position="fixed" style={{
