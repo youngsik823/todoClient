@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import {AppBar, Toolbar, Grid, 
   Typography, Button} from "@mui/material";
+
+
 import './Header.css';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -10,9 +12,9 @@ const Header = () => {
 
   const redirection = useNavigate();
 
-  const [userInfo, setUserInfo] = useState(getLoginUserInfo());
+//   const [userInfo, setUserInfo] = useState(getLoginUserInfo());
 
-  const { token, username, role } = userInfo;
+//   const { token, username, role } = userInfo;
 
   // 로그아웃 핸들러
   const logoutHandler = e => {
@@ -31,9 +33,9 @@ const Header = () => {
      - 배열에 상태변수를 넣을 경우 상태값이 변경될때마다
        리렌더링함
   */
-  useEffect(() => {
-    setUserInfo(getLoginUserInfo());
-  }, []);
+//   useEffect(() => {
+//     setUserInfo(getLoginUserInfo());
+//   }, []);
 
   return (
     <AppBar position="fixed" style={{
@@ -52,7 +54,7 @@ const Header = () => {
                         <Typography variant="h4">
                             {
                                 isLogin()
-                                ? username + '님'
+                                ? getLoginUserInfo().username + '님'
                                 : '오늘'
                             }
                             의 할일
