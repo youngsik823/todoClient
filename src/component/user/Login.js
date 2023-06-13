@@ -1,6 +1,6 @@
 import React from 'react';
 import {Grid, Button, Container, Typography, TextField} from "@mui/material";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { API_BASE_URL as BASE, USER } from '../../config/host-config';
 
@@ -81,6 +81,7 @@ const Login = () => {
                         label="email address"
                         name="email"
                         autoComplete="email"
+                        autoFocus
                     />
                 </Grid>
                 <Grid item xs={12}>
@@ -100,11 +101,18 @@ const Login = () => {
                         type="submit"
                         fullWidth
                         variant="contained"
-                        color="primary"
+                        style={{background: '#38d9a9'}}
                     >
                         로그인
                     </Button>
                 </Grid>
+                <Grid item>
+                    <Link to="/join">
+                        회원가입을 통해 서비스를 이용하세요.
+                    </Link>
+                </Grid>
+                <Grid container justify="flex-end">
+            </Grid>
             </Grid>
         </form>
     </Container>

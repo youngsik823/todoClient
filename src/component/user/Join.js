@@ -7,12 +7,13 @@ import {
   Container,
   Grid,
   TextField,
-  Typography,
-  Link
+  Typography
 } from "@mui/material";
 
+
+
 // 리다이렉트 사용하기
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { API_BASE_URL as BASE, USER } from '../../config/host-config';
 
 const Join = () => {
@@ -366,7 +367,7 @@ const Join = () => {
             </Grid>
             <Grid container justify="flex-end">
                 <Grid item>
-                    <Link href="/login" variant="body2">
+                    <Link to="/login">
                         이미 계정이 있습니까? 로그인 하세요.
                     </Link>
                 </Grid>
