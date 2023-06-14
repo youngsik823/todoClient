@@ -3,10 +3,18 @@ import {Grid, Button, Container, Typography, TextField} from "@mui/material";
 import { Link, useNavigate } from 'react-router-dom';
 
 import { API_BASE_URL as BASE, USER } from '../../config/host-config';
+import { setLoginUserInfo, isLogin } from '../../util/login-util';
 
 const Login = () => {
 
   const redirection = useNavigate();
+
+  if (isLogin()) {
+    alert('이미 로그인 중입니다.');
+    window.history.back();
+    return;
+  }
+
 
   const REQUEST_URL = BASE + USER + '/signin';
 
@@ -32,15 +40,13 @@ const Login = () => {
       return;
     }
 
-    const { token, userName, email, role } = await res.json(); // 서버에서 온 json 읽기
+    const userInfo = await res.json(); // 서버에서 온 json 읽기
     // alert(json.userName);
 
     // json에 담긴 인증정보를 클라이언트에 보관
     // 1. 로컬 스토리지 - 브라우저가 종료되어도 보관됨
     // 2. 세션 스토리지 - 브라우저가 종료되면 사라짐
-    localStorage.setItem('ACCESS_TOKEN', token);
-    localStorage.setItem('LOGIN_USERNAME', userName);
-    localStorage.setItem('USER_ROLE', role);
+    setLoginUserInfo(userInfo);
 
 
     // 홈으로 리다이렉트
