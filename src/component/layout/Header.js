@@ -17,10 +17,14 @@ const Header = () => {
   // 프로필 이미지 url 상태변수
   const [profileUrl, setProfileUrl] = useState(null);
 
+  // 로그인 상태를 나타내는 상태변수를 추가
+  const [isLoggedIn, setIsLoggedIn] = useState(isLogin()); 
+
   // 로그아웃 핸들러
   const logoutHandler = e => {
 
     localStorage.clear();
+    setProfileUrl(null);
     redirection('/login');
   };
 
@@ -35,9 +39,14 @@ const Header = () => {
        리렌더링함
   */
   
+    // 로그인 상태 변화를 감지하는 useEffect를 추가
+    useEffect(() => {
+        setIsLoggedIn(isLogin());
+    }, [isLogin()]);
 
   useEffect(() => {
     
+    isLoggedIn &&
     (async() => {
         const res = await fetch(profileRequestURL, {
             method: 'GET',
@@ -56,7 +65,7 @@ const Header = () => {
         }
       })();
 
-  });
+  }, [isLoggedIn]);
 
   return (
     <AppBar position="fixed" style={{
