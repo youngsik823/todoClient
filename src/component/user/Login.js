@@ -9,11 +9,11 @@ const Login = () => {
 
   const redirection = useNavigate();
 
-  if (isLogin()) {
-    alert('이미 로그인 중입니다.');
-    window.history.back();
-    return;
-  }
+  // if (isLogin()) {
+  //   alert('이미 로그인 중입니다.');
+  //   window.history.back();
+  //   return;
+  // }
 
 
   const REQUEST_URL = BASE + USER + '/signin';
